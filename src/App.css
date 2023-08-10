@@ -6,13 +6,31 @@
   height: 40vmin;
   pointer-events: none;
 }
-
+.titles{
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+  align-items:center;
+  flex-grow:1;
+  
+}
+.moviename{
+  font-size:20px;
+  color:black;
+  margin:10px;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+.bg{
+  background-color:#d4d6d6;
+}
+.searchInput{
+  flex-wrap: wrap;
+  border-radius:5px;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -32,6 +50,17 @@
 }
 .App-link {
   color: #61dafb;
+}
+.pagebtns{
+  margin:5px;
+}
+button{
+  padding:6px;
+  border-style:solid;
+  border-radius:5px;
+  background-color:black;
+  color:white;
+  margin:10px;
 }
 
 @keyframes App-logo-spin {

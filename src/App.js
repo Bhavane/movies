@@ -2,18 +2,17 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import MovieCard from './MovieCard'; // Import the MovieCard component
 
-const API_KEY = 'a00f2d40c7d3fe1a235c1e3fdb147665'; // Replace with your API key
+const API_KEY = 'a00f2d40c7d3fe1a235c1e3fdb147665'; 
 
 function App() {
   const [movies, setMovies] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
-  const [sortBy, setSortBy] = useState('release_date.desc');
   const [minRating, setMinRating] = useState(0);
 
   
   useEffect(() => {
     fetchMovies();
-  }, [sortBy]); // Fetch movies whenever sortBy changes
+  }, []);
 
   const fetchMovies = async () => {
     try {
@@ -64,44 +63,17 @@ const handleRatingFilter = () => {
 
   return (
     <div className="App">
-      <h1>Movie Search App</h1>
-      <div>
+      <div className="bg">
+      <div className="titles">
+      <h1 className="moviename">MOVIE NAME</h1>
         <input
-          type="text"
+          type="text" className="searchInput"
           placeholder="Search by movie name"
           value={searchQuery}
           onChange={handleInputChange}
         />
-        <button onClick={handleSearch} className="searchBtn">Search</button>
-      </div>
-      {/* <div className="movie-list">
-        {movies.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} /> // Use the MovieCard component
-        ))}
-      </div> */}
-      <div className="pagination">
-  <button
-    disabled={currentPage === 1}
-    onClick={() => setCurrentPage(currentPage - 1)}
-  >
-    Previous
-  </button>
-  <button
-    disabled={lastItemIndex >= movies.length}
-    onClick={() => setCurrentPage(currentPage + 1)}
-  >
-    Next
-  </button>
-</div>
-<div>
-        <label>Sort By:</label>
-        <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
-          <option value="release_date.desc">Release Date (Desc)</option>
-          <option value="release_date.asc">Release Date (Asc)</option>
-          <option value="vote_average.desc">Rating (Desc)</option>
-          <option value="vote_average.asc">Rating (Asc)</option>
-        </select>
-      </div>
+        <button onClick={handleSearch} className="searchBtn">Search!</button>
+        </div>
 <input
   type="number"
   placeholder="Min Rating"
@@ -109,11 +81,27 @@ const handleRatingFilter = () => {
   onChange={(e) => setMinRating(parseFloat(e.target.value))}
 />
 <button onClick={handleRatingFilter}>Filter by Rating</button>
+
 <ul className="movie-list">
   {currentMovies.map((movie) => (
     <MovieCard key={movie.id} movie={movie} />
   ))}
 </ul>
+<div className="pagination">
+  <button className="pagebtns"
+    disabled={currentPage === 1}
+    onClick={() => setCurrentPage(currentPage - 1)}
+  >
+    Previous
+  </button>
+  <button className="pagebtns"
+    disabled={lastItemIndex >= movies.length}
+    onClick={() => setCurrentPage(currentPage + 1)}
+  >
+    Next
+  </button>
+</div>
+    </div>
     </div>
   );
 }
